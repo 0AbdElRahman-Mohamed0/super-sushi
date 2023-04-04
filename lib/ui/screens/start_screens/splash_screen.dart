@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:super_sushi/ui/screens/start_screens/welcome_screen.dart';
 import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/constants/colors_palette.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
         ),
       ),
-      nextScreen: const SizedBox(),
+      nextScreen: const WelcomeScreen(),
     );
   }
 }
