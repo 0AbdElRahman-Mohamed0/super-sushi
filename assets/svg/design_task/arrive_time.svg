@@ -1,0 +1,16 @@
+<svg id="وقت_الوصول" data-name="وقت الوصول" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Rectangle_19147" data-name="Rectangle 19147" fill="#8c8c8c" stroke="#707070" stroke-width="1" opacity="0">
+    <rect width="20" height="20" stroke="none"/>
+    <rect x="0.5" y="0.5" width="19" height="19" fill="none"/>
+  </g>
+  <g id="Rectangle_19148" data-name="Rectangle 19148" transform="translate(2 2)" fill="#8c8c8c" stroke="#707070" stroke-width="1" opacity="0">
+    <rect width="16" height="16" stroke="none"/>
+    <rect x="0.5" y="0.5" width="15" height="15" fill="none"/>
+  </g>
+  <g id="time-twenty-four" transform="translate(2 2.006)">
+    <path id="Path_27787" data-name="Path 27787" d="M15,17a2,2,0,1,0-4,0h1.333a.666.666,0,1,1,1.333,0c0,.333-.566.758-1.066,1.133-.75.562-1.6,1.2-1.6,2.2V21h4V19.664H12.806c.181-.157.392-.316.593-.466C14.148,18.635,15,18,15,17Z" transform="translate(-3.665 -4.998)" fill="#8c8c8c"/>
+    <path id="Path_27788" data-name="Path 27788" d="M20.665,17.665H19.333V15H18v2.665A1.333,1.333,0,0,0,19.333,19h1.333v2H22V15H20.665Z" transform="translate(-5.998 -4.998)" fill="#8c8c8c"/>
+    <path id="Path_27789" data-name="Path 27789" d="M11,6H9.665V9.332H7v1.333h4Z" transform="translate(-2.333 -2.001)" fill="#8c8c8c"/>
+    <path id="Path_27790" data-name="Path 27790" d="M14.667,1.331V3.581A8,8,0,1,0,6,15.735V14.358a6.667,6.667,0,1,1,7.758-9.693H11.334V6h3.333A1.333,1.333,0,0,0,16,4.665V1.331Z" transform="translate(0 0)" fill="#8c8c8c"/>
+  </g>
+</svg>
