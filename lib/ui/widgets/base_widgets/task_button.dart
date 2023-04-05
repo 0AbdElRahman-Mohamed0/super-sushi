@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:super_sushi/services/db_services/db_handler.dart';
 import 'package:super_sushi/ui/screens/design_task/home_screen/home_screen.dart';
 import 'package:super_sushi/ui/screens/dev_task/repos_screen.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
@@ -8,7 +9,7 @@ import 'package:super_sushi/utils/extensions/asset_path.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
 
 /// Task button to call on welcome screen
-class TaskButton extends StatelessWidget {
+class TaskButton extends StatefulWidget {
   /// Boolean value to check is that task of github or not
   final bool isGithub;
 
@@ -18,25 +19,36 @@ class TaskButton extends StatelessWidget {
   const TaskButton({Key? key, this.isGithub = false}) : super(key: key);
 
   @override
+  State<TaskButton> createState() => _TaskButtonState();
+}
+
+class _TaskButtonState extends State<TaskButton> {
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => isGithub
-          ? Navigator.push<ReposScreen>(
-              context,
-              CupertinoPageRoute(
-                builder: (_) => const ReposScreen(),
-              ),
-            )
-          : Navigator.push<HomeScreen>(
-              context,
-              CupertinoPageRoute(
-                builder: (_) => const HomeScreen(),
-              ),
+      onTap: () async {
+        if (widget.isGithub) {
+          await context.read<DBHandler>().initDB();
+          if (!mounted) return;
+          Navigator.push<ReposScreen>(
+            context,
+            CupertinoPageRoute(
+              builder: (_) => const ReposScreen(),
             ),
+          );
+        } else {
+          Navigator.push<HomeScreen>(
+            context,
+            CupertinoPageRoute(
+              builder: (_) => const HomeScreen(),
+            ),
+          );
+        }
+      },
       child: Container(
         height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
         decoration: BoxDecoration(
-          color: isGithub
+          color: widget.isGithub
               ? Theme.of(context).scaffoldBackgroundColor
               : Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(MagicNumbers.smallBorderRadius),
@@ -49,7 +61,7 @@ class TaskButton extends StatelessWidget {
               borderRadius:
                   BorderRadius.circular(MagicNumbers.smallBorderRadius),
               child: Image.asset(
-                isGithub ? 'github'.toImage : 'design'.toImage,
+                widget.isGithub ? 'github'.toImage : 'design'.toImage,
                 height: MagicNumbers.ICON_SIZE_LARGE,
                 width: MagicNumbers.ICON_SIZE_LARGE,
                 fit: BoxFit.cover,
@@ -57,8 +69,8 @@ class TaskButton extends StatelessWidget {
             ),
             MagicNumbers.MARGIN_SIZE_DEFAULT.pw,
             Text(
-              isGithub ? tr('github') : tr('design'),
-              style: isGithub
+              widget.isGithub ? tr('github') : tr('design'),
+              style: widget.isGithub
                   ? Theme.of(context).textTheme.headlineLarge?.copyWith(
                         fontSize: MagicNumbers.FONT_SIZE_LARGE,
                         fontWeight: FontWeight.w700,

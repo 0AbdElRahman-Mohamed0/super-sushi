@@ -25,5 +25,6 @@
   "load_failed": "load failed",
   "which_action": "Which url you want to open?",
   "repo": "Repo",
-  "owner": "Owner"
+  "owner": "Owner",
+  "ok": "OK"
 }

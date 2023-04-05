@@ -4,9 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:super_sushi/api_services/dio_error_extension.dart';
 import 'package:super_sushi/providers/repo_provider.dart';
 import 'package:super_sushi/providers/repos_provider.dart';
+import 'package:super_sushi/services/api/dio_error_extension.dart';
+import 'package:super_sushi/services/db_services/db_handler.dart';
 import 'package:super_sushi/ui/screens/dev_task/search_screen.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/error_pop_up.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/loading_widget.dart';
@@ -41,7 +42,9 @@ class _ReposScreenState extends State<ReposScreen> {
 
   _getData() async {
     try {
-      context.read<ReposProvider>().getRepos(1);
+      final reposPerPage = await context.read<ReposProvider>().getRepos(1);
+      if (!mounted) return;
+      await context.read<DBHandler>().batchRepos(reposPerPage);
       _refreshController.refreshCompleted();
     } on DioError catch (e) {
       showDialog(
@@ -62,7 +65,10 @@ class _ReposScreenState extends State<ReposScreen> {
 
   void _onLoading() async {
     try {
-      context.read<ReposProvider>().getRepos(++_page);
+      final reposPerPage =
+          await context.read<ReposProvider>().getRepos(++_page);
+      if (!mounted) return;
+      await context.read<DBHandler>().batchRepos(reposPerPage);
       _refreshController.loadComplete();
     } catch (e) {
       _refreshController.loadFailed();
@@ -85,6 +91,7 @@ class _ReposScreenState extends State<ReposScreen> {
   @override
   Widget build(BuildContext context) {
     final repos = context.watch<ReposProvider>().repos;
+
     return Scaffold(
       body: Column(
         children: [

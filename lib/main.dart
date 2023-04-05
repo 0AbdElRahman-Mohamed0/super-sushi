@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:super_sushi/providers/app_provider.dart';
 import 'package:super_sushi/providers/repos_provider.dart';
+import 'package:super_sushi/services/db_services/db_handler.dart';
 import 'package:super_sushi/ui/screens/start_screens/splash_screen.dart';
 import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/theme/app_theme.dart';
@@ -24,6 +25,9 @@ void main() async {
           ),
           ChangeNotifierProvider<ReposProvider>(
             create: (_) => ReposProvider(),
+          ),
+          ChangeNotifierProvider<DBHandler>(
+            create: (_) => DBHandler(),
           ),
         ],
         child: const Main(),

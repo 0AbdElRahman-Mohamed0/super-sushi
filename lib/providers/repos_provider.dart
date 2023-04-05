@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:super_sushi/api_services/dio_client.dart';
 import 'package:super_sushi/models/dev_task/repo_model.dart';
+import 'package:super_sushi/services/api/dio_client.dart';
 
 export 'package:provider/provider.dart';
 
@@ -12,7 +12,7 @@ class ReposProvider extends ChangeNotifier {
   List<RepoModel>? repos;
 
   /// Get repos data
-  getRepos(int page) async {
+  Future<List<RepoModel>> getRepos(int page) async {
     if (page == 1) {
       repos = null;
       notifyListeners();
@@ -30,5 +30,6 @@ class ReposProvider extends ChangeNotifier {
       }
     }
     notifyListeners();
+    return tmp;
   }
 }
