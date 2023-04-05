@@ -4,13 +4,24 @@ import 'package:super_sushi/providers/repo_provider.dart';
 import 'package:super_sushi/ui/widgets/dev_task/repo_card.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 
+/// Search delegate to search via repos
 class SearchScreen extends SearchDelegate<String> {
+  /// Constructor of search
+  /// The [context] is a Build context of the tree to use here.
+  ///
+  /// The [initialList] is a list of repos you want to search in
+  /// and it can't be null.
   SearchScreen({this.context, required this.initialList}) {
     filteredList = List.of(initialList);
   }
 
+  /// Context to use
   BuildContext? context;
+
+  /// Initial repos list
   List<dynamic> initialList;
+
+  /// Leave initial list as it and use sublist
   List<dynamic> filteredList = [];
 
   @override
