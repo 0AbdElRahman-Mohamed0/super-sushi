@@ -3,5 +3,7 @@
   "design": "Design",
   "github": "Github",
   "location_failed": "Location Failed",
-  "change": "Change"
+  "change": "Change",
+  "search_hint": "Search for a meal or a restaurant",
+  "egp": "EGP"
 }

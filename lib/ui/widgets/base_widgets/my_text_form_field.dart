@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:super_sushi/utils/constants/magic_numbers.dart';
 
+/// Custom text field
 class MyTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -24,6 +26,7 @@ class MyTextFormField extends StatelessWidget {
   final Color? borderColor;
   final BorderRadius? borderRadius;
 
+  /// Custom text field constructor
   const MyTextFormField({
     Key? key,
     this.prefixIcon,
@@ -66,7 +69,7 @@ class MyTextFormField extends StatelessWidget {
       maxLines: maxLines,
       style: Theme.of(context).textTheme.headlineLarge?.copyWith(
             fontWeight: FontWeight.w400,
-            fontSize: 20,
+            fontSize: MagicNumbers.FONT_SIZE_LARGE,
           ),
       cursorColor: Theme.of(context).primaryColor,
       initialValue: initialValue,
@@ -76,65 +79,9 @@ class MyTextFormField extends StatelessWidget {
           child: prefixIcon,
         ),
         suffixIcon: suffixIcon,
-        filled: true,
-        fillColor: Theme.of(context).scaffoldBackgroundColor,
-        disabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).dividerColor,
-          ),
-          borderRadius: borderRadius ??
-              const BorderRadius.all(
-                Radius.circular(8),
-              ),
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).dividerColor,
-          ),
-          borderRadius: borderRadius ??
-              const BorderRadius.all(
-                Radius.circular(8),
-              ),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          borderRadius: borderRadius ??
-              const BorderRadius.all(
-                Radius.circular(8),
-              ),
-        ),
-        errorBorder: UnderlineInputBorder(
-          // borderSide: BorderSide.none,
-          borderRadius: borderRadius ??
-              const BorderRadius.all(
-                Radius.circular(8),
-              ),
-        ),
-        focusedErrorBorder: UnderlineInputBorder(
-          // borderSide: BorderSide.none,
-          borderRadius: borderRadius ??
-              const BorderRadius.all(
-                Radius.circular(8),
-              ),
-        ),
-        border: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).dividerColor,
-          ),
-          borderRadius: borderRadius ??
-              const BorderRadius.all(
-                Radius.circular(8),
-              ),
-        ),
         labelText: labelText,
         labelStyle: labelStyle,
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.displayLarge?.copyWith(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-            ),
         floatingLabelStyle: floatingLabelStyle,
         counterText: "",
       ),

@@ -35,7 +35,39 @@ class AppTheme {
           color: ColorsPalette.hint,
         ),
       ),
-      inputDecorationTheme: const InputDecorationTheme(
+      inputDecorationTheme: InputDecorationTheme(
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.circular(MagicNumbers.extraSmallBorderRadius),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.circular(MagicNumbers.extraSmallBorderRadius),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.circular(MagicNumbers.extraSmallBorderRadius),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.circular(MagicNumbers.extraSmallBorderRadius),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.circular(MagicNumbers.extraSmallBorderRadius),
+        ),
+        filled: true,
+        fillColor: ColorsPalette.backgroundColor,
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius:
+              BorderRadius.circular(MagicNumbers.extraSmallBorderRadius),
+        ),
         hintStyle: TextStyle(
           fontSize: MagicNumbers.FONT_SIZE_SMALL,
           fontWeight: FontWeight.w400,

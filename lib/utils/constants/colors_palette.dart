@@ -8,10 +8,10 @@ class ColorsPalette {
   /// Second app primary color
   static const secondPrimaryColor = Color(0xFF007A7B);
 
-  /// Second app primary color
+  /// Secondary color
   static const secondaryColor = Color(0xFFDAE5E6);
 
-  /// App shadow color
+  /// Shadow color
   static const shadowColor = Color(0xFF000000);
 
   /// Card color
