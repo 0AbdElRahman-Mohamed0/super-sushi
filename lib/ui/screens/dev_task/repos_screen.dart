@@ -8,6 +8,8 @@ import 'package:super_sushi/providers/repo_provider.dart';
 import 'package:super_sushi/providers/repos_provider.dart';
 import 'package:super_sushi/services/api/dio_error_extension.dart';
 import 'package:super_sushi/services/db_services/db_handler.dart';
+import 'package:super_sushi/services/notifications/notification_handler.dart';
+import 'package:super_sushi/services/schedule/task_handler.dart';
 import 'package:super_sushi/ui/screens/dev_task/search_screen.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/error_pop_up.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/loading_widget.dart';
@@ -61,6 +63,9 @@ class _ReposScreenState extends State<ReposScreen> {
       if (!mounted) return;
       await context.read<DBHandler>().batchRepos(reposPerPage);
       _refreshController.refreshCompleted();
+      NotificationHandler().showNotification(
+          title: 'New data', body: 'You got a fresh data ^^.');
+      TaskHandler().addTask();
     } on DioError catch (e) {
       showDialog(
         context: context,
