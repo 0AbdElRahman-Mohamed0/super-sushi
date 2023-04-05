@@ -10,5 +10,9 @@
   "fast_order": "Fast Order",
   "restaurants": "Restaurants",
   "grocery": "Grocery",
-  "re_order": "Re Order"
+  "re_order": "Re Order",
+  "most_wanted": "Most Wanted",
+  "all": "All",
+  "min": "Min",
+  "may_love": "May Love"
 }

@@ -10,5 +10,9 @@
   "fast_order": "الطلب السريع",
   "restaurants": "المطاعم",
   "grocery": "بقالة",
-  "re_order": "إعادة الطلب"
+  "re_order": "إعادة الطلب",
+  "most_wanted": "الأكثر طلبا",
+  "all": "الكل",
+  "min": "دقيقة",
+  "may_love": "قد يعجبك"
 }

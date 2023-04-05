@@ -7,6 +7,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:super_sushi/ui/screens/design_task/home_screen/data/home_static_data.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/my_text_form_field.dart';
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/category_card.dart';
+import 'package:super_sushi/ui/widgets/design_task/home_widgets/may_love_card.dart';
+import 'package:super_sushi/ui/widgets/design_task/home_widgets/most_wanted_card.dart';
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/re_order_card.dart';
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/slider_widget.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
@@ -76,8 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        padding: const EdgeInsets.symmetric(
+          vertical: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
+        ),
         children: [
-          MagicNumbers.MARGIN_SIZE_LARGE.ph,
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
@@ -253,6 +257,80 @@ class _HomeScreenState extends State<HomeScreen> {
                       description: order.description,
                       imagePath: order.imagePath,
                     ),
+                  )
+                  .toList(),
+            ),
+          ),
+          MagicNumbers.MARGIN_SIZE_EXTRA_Some_LARGE.ph,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  tr('most_wanted'),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontSize: MagicNumbers.FONT_SIZE_EXTRA_HIGH_LARGE,
+                        fontWeight: FontWeight.w400,
+                      ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      tr('all'),
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_EXTRA_HIGH_LARGE,
+                            fontWeight: FontWeight.w400,
+                          ),
+                    ),
+                    MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
+                    SvgPicture.asset('forward_arrow'.toSvg),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          MagicNumbers.MARGIN_SIZE_DEFAULT.ph,
+          SizedBox(
+            height: MagicNumbers.mostWantedCardSize,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+              ),
+              children: mostWanted
+                  .map(
+                    (res) => MostWantedCard(restaurant: res),
+                  )
+                  .toList(),
+            ),
+          ),
+          MagicNumbers.MARGIN_SIZE_EXTRA_Some_LARGE.ph,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+            ),
+            child: Text(
+              tr('may_love'),
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontSize: MagicNumbers.FONT_SIZE_EXTRA_HIGH_LARGE,
+                    fontWeight: FontWeight.w400,
+                  ),
+            ),
+          ),
+          MagicNumbers.MARGIN_SIZE_DEFAULT.ph,
+          SizedBox(
+            height: MagicNumbers.mayLoveCardHeight,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+              ),
+              children: mayLove
+                  .map(
+                    (meal) => MayLoveCard(meal: meal),
                   )
                   .toList(),
             ),

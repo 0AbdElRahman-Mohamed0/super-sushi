@@ -41,7 +41,12 @@ class MagicNumbers {
   static const double smallBorderRadius = 8;
   static const double largeBorderRadius = 14;
 
+  static const double cartSizeBackground = 40;
+  static const double cartBackgroundOpacity = 0.8;
   static const double sliderHeight = 150;
   static const double categoryCardHeight = 130;
   static const double reOrderCardHeight = 110;
+  static const double mostWantedCardSize = 250;
+  static const double mayLoveCardHeight = 270;
+  static const double mayLoveCardWidth = 180;
 }
