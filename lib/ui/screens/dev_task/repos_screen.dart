@@ -133,14 +133,38 @@ class _ReposScreenState extends State<ReposScreen> {
                         } else if (mode == LoadStatus.loading) {
                           body = const CupertinoActivityIndicator();
                         } else if (mode == LoadStatus.failed) {
-                          body = Text(tr('load_failed'));
+                          body = Text(
+                            tr('load_failed'),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge
+                                ?.copyWith(
+                                    fontSize: MagicNumbers.MARGIN_SIZE_DEFAULT,
+                                    fontWeight: FontWeight.w400),
+                          );
                         } else if (mode == LoadStatus.canLoading) {
-                          body = Text(tr('release_load'));
+                          body = Text(
+                            tr('release_load'),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge
+                                ?.copyWith(
+                                    fontSize: MagicNumbers.MARGIN_SIZE_DEFAULT,
+                                    fontWeight: FontWeight.w400),
+                          );
                         } else {
-                          body = Text(tr('no_more_data'));
+                          body = Text(
+                            tr('no_more_data'),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge
+                                ?.copyWith(
+                                    fontSize: MagicNumbers.MARGIN_SIZE_DEFAULT,
+                                    fontWeight: FontWeight.w400),
+                          );
                         }
                         return SizedBox(
-                          height: 55.0,
+                          height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
                           child: Center(child: body),
                         );
                       },
@@ -149,7 +173,6 @@ class _ReposScreenState extends State<ReposScreen> {
                     onLoading: _onLoading,
                     child: ListView(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
                         vertical: MagicNumbers.PADDING_SIZE_EXTRA_LARGE,
                       ),
                       children: [

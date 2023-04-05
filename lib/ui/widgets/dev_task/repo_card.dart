@@ -32,93 +32,85 @@ class RepoCard extends StatelessWidget {
           MagicNumbers.smallBorderRadius,
         ),
       ),
-      child: Column(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius:
-                    BorderRadius.circular(MagicNumbers.smallBorderRadius),
-                child: CachedNetworkImage(
-                  imageUrl: repo.owner?.avatarUrl ?? '',
+          ClipRRect(
+            borderRadius: BorderRadius.circular(MagicNumbers.smallBorderRadius),
+            child: CachedNetworkImage(
+              imageUrl: repo.owner?.avatarUrl ?? '',
+              width: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
+              height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              placeholder: (context, url) => const LoadingWidget(),
+              errorWidget: (context, url, error) => Container(
+                width: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
+                height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Image.asset(
+                  'sushi'.toImage,
+                  fit: BoxFit.cover,
                   width: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
                   height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  placeholder: (context, url) => const LoadingWidget(),
-                  errorWidget: (context, url, error) => Container(
-                    width: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
-                    height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.asset(
-                      'sushi'.toImage,
-                      fit: BoxFit.cover,
-                      width: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
-                      height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
-                    ),
-                  ),
                 ),
               ),
-              MagicNumbers.MARGIN_SIZE_SOME_SMALL.pw,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      repo.owner?.username ?? '',
-                      style: repo.fork
-                          ? Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                fontWeight: FontWeight.w400,
-                              )
-                          : Theme.of(context).textTheme.displayLarge?.copyWith(
-                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                fontWeight: FontWeight.w400,
-                              ),
-                    ),
-                    MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.ph,
-                    Text(
-                      repo.name ?? '',
-                      style: repo.fork
-                          ? Theme.of(context).textTheme.displaySmall?.copyWith(
-                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                fontWeight: FontWeight.w400,
-                              )
-                          : Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.copyWith(
-                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                fontWeight: FontWeight.w400,
-                              ),
-                    ),
-                    MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.ph,
-                    Text(
-                      repo.description ?? '',
-                      style: repo.fork
-                          ? Theme.of(context).textTheme.displayMedium?.copyWith(
-                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                fontWeight: FontWeight.w400,
-                              )
-                          : Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                fontWeight: FontWeight.w400,
-                              ),
-                    ),
-                  ],
+            ),
+          ),
+          MagicNumbers.MARGIN_SIZE_SOME_SMALL.pw,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  repo.owner?.username ?? '',
+                  style: repo.fork
+                      ? Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          )
+                      : Theme.of(context).textTheme.displayLarge?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          ),
                 ),
-              ),
-            ],
+                MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.ph,
+                Text(
+                  repo.name ?? '',
+                  style: repo.fork
+                      ? Theme.of(context).textTheme.displaySmall?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          )
+                      : Theme.of(context).textTheme.headlineMedium?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          ),
+                ),
+                MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.ph,
+                Text(
+                  repo.description ?? '',
+                  style: repo.fork
+                      ? Theme.of(context).textTheme.displayMedium?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          )
+                      : Theme.of(context).textTheme.headlineLarge?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
