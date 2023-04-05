@@ -62,7 +62,7 @@ final List<MayLoveModel> mayLove = [
     oldPrice: 60,
     price: 30,
     imagePath: 'grill'.toImage,
-    resImagePath: 'res2'.toImage,
+    resImagePath: 'res1'.toImage,
     resName: 'مطعم هندي',
   ),
   MayLoveModel(
@@ -70,7 +70,7 @@ final List<MayLoveModel> mayLove = [
     oldPrice: 60,
     price: 30,
     imagePath: 'grill'.toImage,
-    resImagePath: 'res2'.toImage,
+    resImagePath: 'res1'.toImage,
     resName: 'مطعم هندي',
   ),
   MayLoveModel(
@@ -78,7 +78,7 @@ final List<MayLoveModel> mayLove = [
     oldPrice: 60,
     price: 30,
     imagePath: 'grill'.toImage,
-    resImagePath: 'res2'.toImage,
+    resImagePath: 'res1'.toImage,
     resName: 'مطعم هندي',
   ),
 ];
