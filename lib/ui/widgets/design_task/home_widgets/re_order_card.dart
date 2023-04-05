@@ -67,24 +67,32 @@ class ReOrderCard extends StatelessWidget {
                 child: Image.asset(imagePath),
               ),
               MagicNumbers.MARGIN_SIZE_SOME_SMALL.pw,
-              Column(
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                          fontWeight: FontWeight.w400,
-                        ),
-                  ),
-                  MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.ph,
-                  Text(
-                    description,
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                          fontWeight: FontWeight.w400,
-                        ),
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                            fontWeight: FontWeight.w400,
+                          ),
+                    ),
+                    MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.ph,
+                    Text(
+                      description,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style:
+                          Theme.of(context).textTheme.displayMedium?.copyWith(
+                                fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                                fontWeight: FontWeight.w400,
+                              ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -93,7 +101,9 @@ class ReOrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             mainAxisSize: MainAxisSize.max,
             children: [
-              SvgPicture.asset('${AppConstants.designTask}/re_order'.toSvg),
+              SvgPicture.asset(
+                '${AppConstants.designTask}/re_order'.toSvg,
+              ),
               MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
               Text(
                 tr('re_order'),

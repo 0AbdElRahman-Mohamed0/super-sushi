@@ -45,6 +45,7 @@ class CategoryCard extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Text(
         title,
+        textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
               fontWeight: FontWeight.w400,

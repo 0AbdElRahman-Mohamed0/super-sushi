@@ -90,11 +90,12 @@ class MostWantedCard extends StatelessWidget {
                       .toList(),
                 ),
                 MagicNumbers.MARGIN_SIZE_SMALL.ph,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     SvgPicture.asset(
-                        '${AppConstants.designTask}/arrive_time'.toSvg),
+                      '${AppConstants.designTask}/arrive_time'.toSvg,
+                    ),
                     MagicNumbers.MARGIN_SIZE_EXTRA_VERY_SMALL.pw,
                     Text(
                       '${restaurant.time} ${tr('min')}',
@@ -108,7 +109,8 @@ class MostWantedCard extends StatelessWidget {
                     const _DotShape(),
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
                     SvgPicture.asset(
-                        '${AppConstants.designTask}/delivery'.toSvg),
+                      '${AppConstants.designTask}/delivery'.toSvg,
+                    ),
                     MagicNumbers.MARGIN_SIZE_EXTRA_VERY_SMALL.pw,
                     Text(
                       '${restaurant.deliveryPrice} ${tr('egp')}',
@@ -121,7 +123,9 @@ class MostWantedCard extends StatelessWidget {
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
                     const _DotShape(),
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
-                    SvgPicture.asset('${AppConstants.designTask}/star'.toSvg),
+                    SvgPicture.asset(
+                      '${AppConstants.designTask}/star'.toSvg,
+                    ),
                     MagicNumbers.MARGIN_SIZE_EXTRA_VERY_SMALL.pw,
                     Text(
                       restaurant.rating.toString(),

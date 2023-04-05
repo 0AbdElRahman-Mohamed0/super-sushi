@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,6 +95,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: SvgPicture.asset(
+                        'forward_arrow'.toSvg,
+                        matchTextDirection: true,
+                      ),
+                    ),
+                    MagicNumbers.MARGIN_SIZE_DEFAULT.pw,
                     Expanded(
                       child: Row(
                         children: [
@@ -140,9 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: MyTextFormField(
                         onChanged: (v) {},
-                        prefixIcon: SvgPicture.asset(
-                            '${AppConstants.designTask}/search'.toSvg),
-                        hintText: tr('search_hint'),
+                        prefixIcon: SvgPicture.asset('search'.toSvg),
+                        hintText: tr('search_meal'),
                       ),
                     ),
                     MagicNumbers.MARGIN_SIZE_SMALL.pw,
@@ -297,8 +306,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                     ),
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
-                    SvgPicture.asset(
-                        '${AppConstants.designTask}/forward_arrow'.toSvg),
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi),
+                      child: SvgPicture.asset(
+                        'forward_arrow'.toSvg,
+                        matchTextDirection: true,
+                      ),
+                    ),
                   ],
                 ),
               ],
