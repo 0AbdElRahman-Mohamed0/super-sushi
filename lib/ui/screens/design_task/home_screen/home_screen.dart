@@ -92,25 +92,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        SvgPicture.asset('location'.toSvg),
-                        MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
-                        if (_placeMarks == null)
-                          const CupertinoActivityIndicator()
-                        else
-                          Text(
-                            _currentLocation ?? '',
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall
-                                ?.copyWith(
-                                  fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                          ),
-                      ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset('location'.toSvg),
+                          MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
+                          if (_placeMarks == null)
+                            const CupertinoActivityIndicator()
+                          else
+                            Expanded(
+                              child: Text(
+                                _currentLocation ?? '',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      fontSize: MagicNumbers.FONT_SIZE_DEFAULT,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
+                    MagicNumbers.MARGIN_SIZE_DEFAULT.pw,
                     InkWell(
                       onTap: _getLocation,
                       child: Text(
