@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:super_sushi/ui/screens/design_task/home_screen/home_screen.dart';
+import 'package:super_sushi/ui/screens/dev_task/repos_screen.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
@@ -20,7 +21,12 @@ class TaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => isGithub
-          ? null
+          ? Navigator.push<ReposScreen>(
+              context,
+              CupertinoPageRoute(
+                builder: (_) => const ReposScreen(),
+              ),
+            )
           : Navigator.push<HomeScreen>(
               context,
               CupertinoPageRoute(

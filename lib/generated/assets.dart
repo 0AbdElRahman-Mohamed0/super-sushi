@@ -20,15 +20,12 @@ class Assets {
       'assets/images/design_task/cook_door.png';
   static const String designTaskDelivery =
       'assets/svg/design_task/delivery.svg';
-  static const String designTaskForwardArrow =
-      'assets/svg/design_task/forward_arrow.svg';
   static const String designTaskGrill = 'assets/images/design_task/grill.png';
   static const String designTaskLocation =
       'assets/svg/design_task/location.svg';
   static const String designTaskReOrder = 'assets/svg/design_task/re_order.svg';
   static const String designTaskRes1 = 'assets/images/design_task/res1.png';
   static const String designTaskRes2 = 'assets/images/design_task/res2.png';
-  static const String designTaskSearch = 'assets/svg/design_task/search.svg';
   static const String designTaskSlider = 'assets/images/design_task/slider.png';
   static const String designTaskStar = 'assets/svg/design_task/star.svg';
   static const String designTaskUserLogoSingle =
@@ -38,4 +35,6 @@ class Assets {
   static const String imagesSushi = 'assets/images/sushi.png';
   static const String languagesAr = 'assets/languages/ar.json';
   static const String languagesEn = 'assets/languages/en.json';
+  static const String svgForwardArrow = 'assets/svg/forward_arrow.svg';
+  static const String svgSearch = 'assets/svg/search.svg';
 }

@@ -31,4 +31,7 @@ class ColorsPalette {
 
   /// Hint color
   static const hint = Color(0xFF1A1817);
+
+  /// Fork green color
+  static const forkLightGreen = Colors.lightGreen;
 }
