@@ -11,6 +11,7 @@ import 'package:super_sushi/ui/widgets/design_task/home_widgets/may_love_card.da
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/most_wanted_card.dart';
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/re_order_card.dart';
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/slider_widget.dart';
+import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
@@ -95,7 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Row(
                         children: [
-                          SvgPicture.asset('location'.toSvg),
+                          SvgPicture.asset(
+                              '${AppConstants.designTask}/location'.toSvg),
                           MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
                           if (_placeMarks == null)
                             const CupertinoActivityIndicator()
@@ -138,7 +140,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: MyTextFormField(
                         onChanged: (v) {},
-                        prefixIcon: SvgPicture.asset('search'.toSvg),
+                        prefixIcon: SvgPicture.asset(
+                            '${AppConstants.designTask}/search'.toSvg),
                         hintText: tr('search_hint'),
                       ),
                     ),
@@ -162,7 +165,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(12),
-                                child: SvgPicture.asset('cart'.toSvg),
+                                child: SvgPicture.asset(
+                                    '${AppConstants.designTask}/cart'.toSvg),
                               ),
                               Container(
                                 padding: const EdgeInsets.all(2),
@@ -293,7 +297,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                     ),
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
-                    SvgPicture.asset('forward_arrow'.toSvg),
+                    SvgPicture.asset(
+                        '${AppConstants.designTask}/forward_arrow'.toSvg),
                   ],
                 ),
               ],

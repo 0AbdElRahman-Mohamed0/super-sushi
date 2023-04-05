@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:super_sushi/models/design_task/may_love_model.dart';
+import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
@@ -67,7 +68,7 @@ class MayLoveCard extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 child: SvgPicture.asset(
-                  'cart'.toSvg,
+                  '${AppConstants.designTask}/cart'.toSvg,
                   height: MagicNumbers.ICON_SIZE_SMALL,
                   width: MagicNumbers.ICON_SIZE_SMALL,
                 ),

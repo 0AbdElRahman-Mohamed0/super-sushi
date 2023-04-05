@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
@@ -17,9 +18,9 @@ class SliderWidget extends StatefulWidget {
 class _SliderWidgetState extends State<SliderWidget> {
   int indicatorIndex = 0;
   final List<String> _sliderImages = [
-    'slider'.toImage,
-    'slider'.toImage,
-    'slider'.toImage,
+    '${AppConstants.designTask}/slider'.toImage,
+    '${AppConstants.designTask}/slider'.toImage,
+    '${AppConstants.designTask}/slider'.toImage,
   ];
 
   @override

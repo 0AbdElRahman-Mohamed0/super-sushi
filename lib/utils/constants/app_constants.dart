@@ -3,6 +3,12 @@ class AppConstants {
   /// The app name
   static const String appName = 'Super Sushi';
 
+  /// Directory name for design task
+  static const String designTask = 'design_task';
+
+  /// Directory name for dev task
+  static const String devTask = 'dev_task';
+
   /// local cache keyword to check app theme
   static const String theme = 'theme';
 

@@ -10,26 +10,32 @@ class Assets {
       'assets/fonts/Almarai/Almarai-Light.ttf';
   static const String almaraiAlmaraiRegular =
       'assets/fonts/Almarai/Almarai-Regular.ttf';
-  static const String imagesCat1 = 'assets/images/cat1.png';
-  static const String imagesCat2 = 'assets/images/cat2.png';
-  static const String imagesCat3 = 'assets/images/cat3.png';
-  static const String imagesCookDoor = 'assets/images/cook_door.png';
+  static const String designTaskArriveTime =
+      'assets/svg/design_task/arrive_time.svg';
+  static const String designTaskCart = 'assets/svg/design_task/cart.svg';
+  static const String designTaskCat1 = 'assets/images/design_task/cat1.png';
+  static const String designTaskCat2 = 'assets/images/design_task/cat2.png';
+  static const String designTaskCat3 = 'assets/images/design_task/cat3.png';
+  static const String designTaskCookDoor =
+      'assets/images/design_task/cook_door.png';
+  static const String designTaskDelivery =
+      'assets/svg/design_task/delivery.svg';
+  static const String designTaskForwardArrow =
+      'assets/svg/design_task/forward_arrow.svg';
+  static const String designTaskGrill = 'assets/images/design_task/grill.png';
+  static const String designTaskLocation =
+      'assets/svg/design_task/location.svg';
+  static const String designTaskReOrder = 'assets/svg/design_task/re_order.svg';
+  static const String designTaskRes1 = 'assets/images/design_task/res1.png';
+  static const String designTaskRes2 = 'assets/images/design_task/res2.png';
+  static const String designTaskSearch = 'assets/svg/design_task/search.svg';
+  static const String designTaskSlider = 'assets/images/design_task/slider.png';
+  static const String designTaskStar = 'assets/svg/design_task/star.svg';
+  static const String designTaskUserLogoSingle =
+      'assets/images/design_task/user_logo_single.png';
   static const String imagesDesign = 'assets/images/design.png';
   static const String imagesGithub = 'assets/images/github.png';
-  static const String imagesRes1 = 'assets/images/res1.png';
-  static const String imagesRes2 = 'assets/images/res2.png';
-  static const String imagesSlider = 'assets/images/slider.png';
   static const String imagesSushi = 'assets/images/sushi.png';
-  static const String imagesUserLogoSingle =
-      'assets/images/user_logo_single.png';
   static const String languagesAr = 'assets/languages/ar.json';
   static const String languagesEn = 'assets/languages/en.json';
-  static const String svgArriveTime = 'assets/svg/arrive_time.svg';
-  static const String svgCart = 'assets/svg/cart.svg';
-  static const String svgDelivery = 'assets/svg/delivery.svg';
-  static const String svgForwardArrow = 'assets/svg/forward_arrow.svg';
-  static const String svgLocation = 'assets/svg/location.svg';
-  static const String svgReOrder = 'assets/svg/re_order.svg';
-  static const String svgSearch = 'assets/svg/search.svg';
-  static const String svgStar = 'assets/svg/star.svg';
 }

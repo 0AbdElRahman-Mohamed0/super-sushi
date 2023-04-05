@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:super_sushi/models/design_task/most_wanted_model.dart';
+import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/constants/colors_palette.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
@@ -92,7 +93,8 @@ class MostWantedCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SvgPicture.asset('arrive_time'.toSvg),
+                    SvgPicture.asset(
+                        '${AppConstants.designTask}/arrive_time'.toSvg),
                     MagicNumbers.MARGIN_SIZE_EXTRA_VERY_SMALL.pw,
                     Text(
                       '${restaurant.time} ${tr('min')}',
@@ -105,7 +107,8 @@ class MostWantedCard extends StatelessWidget {
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
                     const _DotShape(),
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
-                    SvgPicture.asset('delivery'.toSvg),
+                    SvgPicture.asset(
+                        '${AppConstants.designTask}/delivery'.toSvg),
                     MagicNumbers.MARGIN_SIZE_EXTRA_VERY_SMALL.pw,
                     Text(
                       '${restaurant.deliveryPrice} ${tr('egp')}',
@@ -118,7 +121,7 @@ class MostWantedCard extends StatelessWidget {
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
                     const _DotShape(),
                     MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
-                    SvgPicture.asset('star'.toSvg),
+                    SvgPicture.asset('${AppConstants.designTask}/star'.toSvg),
                     MagicNumbers.MARGIN_SIZE_EXTRA_VERY_SMALL.pw,
                     Text(
                       restaurant.rating.toString(),

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
@@ -92,7 +93,7 @@ class ReOrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             mainAxisSize: MainAxisSize.max,
             children: [
-              SvgPicture.asset('re_order'.toSvg),
+              SvgPicture.asset('${AppConstants.designTask}/re_order'.toSvg),
               MagicNumbers.MARGIN_SIZE_EXTRA_SMALL.pw,
               Text(
                 tr('re_order'),
