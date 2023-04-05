@@ -42,6 +42,8 @@ class _ReposScreenState extends State<ReposScreen> {
 
   _getData() async {
     try {
+      await context.read<DBHandler>().deleteDatabase();
+      if(!mounted)return;
       final reposPerPage = await context.read<ReposProvider>().getRepos(1);
       if (!mounted) return;
       await context.read<DBHandler>().batchRepos(reposPerPage);
