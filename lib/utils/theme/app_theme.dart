@@ -31,6 +31,9 @@ class AppTheme {
         headlineSmall: TextStyle(
           color: ColorsPalette.primaryColor,
         ),
+        displaySmall: TextStyle(
+          color: ColorsPalette.hint,
+        ),
       ),
       inputDecorationTheme: const InputDecorationTheme(
         hintStyle: TextStyle(

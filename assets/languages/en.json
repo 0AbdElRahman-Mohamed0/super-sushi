@@ -1,5 +1,7 @@
 {
   "select_task": "Welcome to my task ^^, Feel free to select task you would like to review.",
   "design": "Design",
-  "github": "Github"
+  "github": "Github",
+  "location_failed": "Location Failed",
+  "change": "Change"
 }

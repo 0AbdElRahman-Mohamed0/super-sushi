@@ -13,9 +13,9 @@ void main() async {
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/languages',
-      fallbackLocale: const Locale('en'),
+      fallbackLocale: const Locale('ar'),
       useOnlyLangCode: true,
-      startLocale: const Locale('en'),
+      startLocale: const Locale('ar'),
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider<AppProvider>(
