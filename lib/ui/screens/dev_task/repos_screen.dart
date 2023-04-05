@@ -116,6 +116,7 @@ class _ReposScreenState extends State<ReposScreen> {
               ],
             ),
           ),
+          MagicNumbers.PADDING_SIZE_DEFAULT.ph,
           Expanded(
             child: repos == null
                 ? const Center(
