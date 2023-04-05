@@ -22,5 +22,8 @@
   "error": "Error!",
   "no_more_data": "no more data",
   "release_load": "release to load",
-  "load_failed": "load failed"
+  "load_failed": "load failed",
+  "which_action": "Which url you want to open?",
+  "repo": "Repo",
+  "owner": "Owner"
 }

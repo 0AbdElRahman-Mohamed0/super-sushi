@@ -16,6 +16,7 @@ class MagicNumbers {
   static const double PADDING_SIZE_LARGE = 20.0;
   static const double PADDING_SIZE_EXTRA_LARGE = 24.0;
   static const double PADDING_SIZE_VERTICAL_EXTRA_LARGE = 32.0;
+  static const double PADDING_SIZE_VERTICAL_SOME_EXTRA_LARGE = 46.0;
   static const double PADDING_SIZE_SUPER_EXTRA_LARGE = 58.0;
   static const double PADDING_SIZE_SUPER_SOME_EXTRA_LARGE = 82.0;
 

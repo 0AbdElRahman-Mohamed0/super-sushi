@@ -4,19 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/empty_space.dart';
 
+/// Popup to show error when fetching data
 class ErrorPopUp extends StatelessWidget {
+  /// Message of the error
   final String message;
-  final String? title;
-  final String? buttonText;
-  final VoidCallback? onClick;
 
-  const ErrorPopUp(
-      {Key? key,
-      required this.message,
-      this.title,
-      this.buttonText,
-      this.onClick})
-      : super(key: key);
+  /// Constructor of task button
+  /// The [message] to get message error to be shown
+  /// and it can't be null.
+  const ErrorPopUp({
+    Key? key,
+    required this.message,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
