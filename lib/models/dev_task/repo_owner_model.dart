@@ -12,14 +12,6 @@ class RepoOwnerModel {
   /// URL of the owner
   String? htmlUrl;
 
-  /// Constructor
-  RepoOwnerModel({
-    this.username,
-    this.id,
-    this.avatarUrl,
-    this.htmlUrl,
-  });
-
   /// Get data from json
   RepoOwnerModel.fromMap(Map<String, dynamic> json) {
     username = json['login'];

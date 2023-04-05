@@ -21,18 +21,7 @@ class RepoModel {
   String? description;
 
   /// Fork of the repo
-  bool? fork;
-
-  /// Constructor
-  RepoModel({
-    this.id,
-    this.name,
-    this.fullName,
-    this.owner,
-    this.htmlUrl,
-    this.description,
-    this.fork,
-  });
+  late bool fork;
 
   /// Get data from json
   RepoModel.fromMap(Map<String, dynamic> json) {
@@ -43,6 +32,6 @@ class RepoModel {
         json['owner'] != null ? RepoOwnerModel.fromMap(json['owner']) : null;
     htmlUrl = json['html_url'];
     description = json['description'];
-    fork = json['fork'];
+    fork = json['fork'] ?? false;
   }
 }
