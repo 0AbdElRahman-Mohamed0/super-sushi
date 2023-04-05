@@ -34,6 +34,12 @@ class AppTheme {
         displaySmall: TextStyle(
           color: ColorsPalette.hint,
         ),
+        displayMedium: TextStyle(
+          color: ColorsPalette.geryLight,
+        ),
+        displayLarge: TextStyle(
+          color: ColorsPalette.secondPrimaryColor,
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         disabledBorder: OutlineInputBorder(

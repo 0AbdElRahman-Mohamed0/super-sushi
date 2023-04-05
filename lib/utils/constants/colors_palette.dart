@@ -20,6 +20,9 @@ class ColorsPalette {
   /// Background color
   static const backgroundColor = Color(0xFFF5F5F5);
 
+  /// Background color
+  static const geryLight = Color(0xFF8C8C8C);
+
   /// White color
   static const white = Color(0xFFFFFFFF);
 

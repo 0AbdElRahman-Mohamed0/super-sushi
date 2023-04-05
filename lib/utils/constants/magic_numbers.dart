@@ -17,12 +17,16 @@ class MagicNumbers {
   static const double PADDING_SIZE_EXTRA_LARGE = 24.0;
   static const double PADDING_SIZE_VERTICAL_EXTRA_LARGE = 32.0;
   static const double PADDING_SIZE_SUPER_EXTRA_LARGE = 58.0;
+  static const double PADDING_SIZE_SUPER_SOME_EXTRA_LARGE = 82.0;
 
+  static const double MARGIN_SIZE_EXTRA_VERY_SMALL = 2.0;
   static const double MARGIN_SIZE_EXTRA_SMALL = 4.0;
+  static const double MARGIN_SIZE_SOME_SMALL = 8.0;
   static const double MARGIN_SIZE_SMALL = 12.0;
   static const double MARGIN_SIZE_DEFAULT = 16.0;
   static const double MARGIN_SIZE_LARGE = 20.0;
   static const double MARGIN_SIZE_EXTRA_LARGE = 24.0;
+  static const double MARGIN_SIZE_EXTRA_Some_LARGE = 26.0;
 
   static const double ICON_SIZE_EXTRA_SMALL = 12.0;
   static const double ICON_SIZE_SMALL = 18.0;
@@ -39,4 +43,5 @@ class MagicNumbers {
 
   static const double sliderHeight = 150;
   static const double categoryCardHeight = 130;
+  static const double reOrderCardHeight = 110;
 }
