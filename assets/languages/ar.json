@@ -5,5 +5,9 @@
   "location_failed": "فشل تحديد الموقع",
   "change": "تغيير",
   "search_hint": "ابحث عن وجبة او مطعم",
-  "egp": "ج"
+  "egp": "ج",
+  "categories": "الأقسام",
+  "fast_order": "الطلب السريع",
+  "restaurants": "المطاعم",
+  "grocery": "بقالة"
 }

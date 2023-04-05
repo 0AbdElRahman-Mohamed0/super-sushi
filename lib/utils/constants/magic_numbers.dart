@@ -38,4 +38,5 @@ class MagicNumbers {
   static const double largeBorderRadius = 14;
 
   static const double sliderHeight = 150;
+  static const double categoryCardHeight = 130;
 }

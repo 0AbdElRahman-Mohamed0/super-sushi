@@ -5,5 +5,9 @@
   "location_failed": "Location Failed",
   "change": "Change",
   "search_hint": "Search for a meal or a restaurant",
-  "egp": "EGP"
+  "egp": "EGP",
+  "categories": "Categories",
+  "fast_order": "Fast Order",
+  "restaurants": "Restaurants",
+  "grocery": "Grocery"
 }

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:super_sushi/models/design_task/category_model.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/my_text_form_field.dart';
+import 'package:super_sushi/ui/widgets/design_task/home_widgets/category_card.dart';
 import 'package:super_sushi/ui/widgets/design_task/home_widgets/slider_widget.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
 import 'package:super_sushi/utils/extensions/asset_path.dart';
@@ -23,6 +25,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Position? _position;
   String? _currentLocation;
   List<Placemark>? _placeMarks;
+  final List<CategoryModel> _categories = [
+    CategoryModel(
+      title: tr('fast_order'),
+      imagePath: 'cat1'.toImage,
+    ),
+    CategoryModel(
+      title: tr('restaurants'),
+      imagePath: 'cat2'.toImage,
+    ),
+    CategoryModel(
+      title: tr('grocery'),
+      imagePath: 'cat3'.toImage,
+    ),
+  ];
 
   @override
   void initState() {
@@ -80,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: MagicNumbers.PADDING_SIZE_SMALL),
+                        horizontal: MagicNumbers.PADDING_SIZE_SMALL,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                           MagicNumbers.extraSmallBorderRadius,
@@ -191,7 +209,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 MagicNumbers.MARGIN_SIZE_LARGE.ph,
                 const SliderWidget(),
+                MagicNumbers.MARGIN_SIZE_DEFAULT.ph,
+                Text(
+                  tr('categories'),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontSize: MagicNumbers.FONT_SIZE_EXTRA_HIGH_LARGE,
+                        fontWeight: FontWeight.w400,
+                      ),
+                ),
               ],
+            ),
+          ),
+          MagicNumbers.MARGIN_SIZE_DEFAULT.ph,
+          SizedBox(
+            height: MagicNumbers.categoryCardHeight,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+              ),
+              children: _categories
+                  .map(
+                    (category) => CategoryCard(
+                      title: category.title,
+                      imagePath: category.imagePath,
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ],
