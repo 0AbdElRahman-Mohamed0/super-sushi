@@ -15,5 +15,12 @@
   "most_wanted": "Most Wanted",
   "all": "All",
   "min": "Min",
-  "may_love": "May Love"
+  "may_love": "May Love",
+  "server_error": "Something went wrong, Please try again.",
+  "cannot_reach": "We couldn't reach our servers, please check your internet connection and try again.",
+  "internal_server_error": "We have some issues please try again!",
+  "error": "Error!",
+  "no_more_data": "no more data",
+  "release_load": "release to load",
+  "load_failed": "load failed"
 }

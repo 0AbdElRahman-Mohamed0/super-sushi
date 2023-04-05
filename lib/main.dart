@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:super_sushi/providers/app_provider.dart';
+import 'package:super_sushi/providers/repos_provider.dart';
 import 'package:super_sushi/ui/screens/start_screens/splash_screen.dart';
 import 'package:super_sushi/utils/constants/app_constants.dart';
 import 'package:super_sushi/utils/theme/app_theme.dart';
@@ -20,6 +21,9 @@ void main() async {
         providers: [
           ChangeNotifierProvider<AppProvider>(
             create: (_) => AppProvider(),
+          ),
+          ChangeNotifierProvider<ReposProvider>(
+            create: (_) => ReposProvider(),
           ),
         ],
         child: const Main(),

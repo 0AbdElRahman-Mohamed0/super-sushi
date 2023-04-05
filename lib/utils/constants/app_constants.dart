@@ -1,5 +1,8 @@
 /// All app string constants
 class AppConstants {
+  /// Api integration url
+  static const apiUrl = 'https://api.github.com/users/square/repos';
+
   /// The app name
   static const String appName = 'Super Sushi';
 

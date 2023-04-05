@@ -22,9 +22,9 @@ class RepoOwnerModel {
 
   /// Get data from json
   RepoOwnerModel.fromMap(Map<String, dynamic> json) {
-    username = json['login'] as String;
-    id = json['id'] as int;
-    avatarUrl = json['avatar_url'] as String;
-    htmlUrl = json['html_url'] as String;
+    username = json['login'];
+    id = json['id'];
+    avatarUrl = json['avatar_url'];
+    htmlUrl = json['html_url'];
   }
 }

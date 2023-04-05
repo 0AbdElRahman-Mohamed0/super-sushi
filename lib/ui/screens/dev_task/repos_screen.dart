@@ -1,9 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:super_sushi/api_services/dio_error_extension.dart';
+import 'package:super_sushi/providers/repo_provider.dart';
+import 'package:super_sushi/providers/repos_provider.dart';
+import 'package:super_sushi/ui/widgets/base_widgets/error_pop_up.dart';
+import 'package:super_sushi/ui/widgets/base_widgets/loading_widget.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/my_text_form_field.dart';
 import 'package:super_sushi/ui/widgets/dev_task/repo_card.dart';
 import 'package:super_sushi/utils/constants/magic_numbers.dart';
@@ -20,102 +25,138 @@ class ReposScreen extends StatefulWidget {
 }
 
 class _ReposScreenState extends State<ReposScreen> {
-  Position? _position;
-  String? _currentLocation;
-  List<Placemark>? _placeMarks;
+  final _refreshController = RefreshController(
+    initialRefresh: false,
+  );
+  int _page = 1;
 
   @override
   void initState() {
     super.initState();
-    _getLocation();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _getData();
+    });
   }
 
-  Future<void> _getLocation() async {
+  _getData() async {
     try {
-      setState(() {
-        _position = null;
-        _placeMarks = null;
-        _currentLocation = null;
-      });
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission != LocationPermission.whileInUse &&
-          permission != LocationPermission.always) {
-        permission = await Geolocator.requestPermission();
-      }
-      if (permission == LocationPermission.whileInUse ||
-          permission == LocationPermission.always) {
-        _position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,
-        );
-
-        _placeMarks = await placemarkFromCoordinates(
-          _position?.latitude.toDouble() ?? 0,
-          _position?.longitude.toDouble() ?? 0,
-          localeIdentifier: context.locale.languageCode,
-        );
-        setState(() {
-          _currentLocation =
-              '${_placeMarks?.first.subLocality}, ${_placeMarks?.first.street}';
-        });
-      } else {
-        setState(() {
-          _currentLocation = tr('location_failed');
-        });
-      }
+      context.read<ReposProvider>().getRepos(1);
+      _refreshController.refreshCompleted();
+    } on DioError catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => ErrorPopUp(
+          message: e.readableError,
+        ),
+      );
     } catch (e) {
-      setState(() {
-        _currentLocation = tr('location_failed');
-      });
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => ErrorPopUp(
+          message: tr('server_error'),
+        ),
+      );
+    }
+  }
+
+  void _onLoading() async {
+    try {
+      context.read<ReposProvider>().getRepos(++_page);
+      _refreshController.loadComplete();
+    } catch (e) {
+      _refreshController.loadFailed();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final repos = context.watch<ReposProvider>().repos;
     return Scaffold(
-      body: ListView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
-          vertical: MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE,
-        ),
+      body: Column(
         children: [
+          MagicNumbers.PADDING_SIZE_SUPER_EXTRA_LARGE.ph,
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+                horizontal: MagicNumbers.PADDING_SIZE_DEFAULT),
+            child: Row(
               children: [
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () => Navigator.pop(context),
-                      child: SvgPicture.asset(
-                        'forward_arrow'.toSvg,
-                        matchTextDirection: true,
-                      ),
-                    ),
-                    MagicNumbers.MARGIN_SIZE_DEFAULT.pw,
-                    Expanded(
-                      child: MyTextFormField(
-                        onChanged: (v) {},
-                        prefixIcon: SvgPicture.asset(
-                          'search'.toSvg,
-                        ),
-                        hintText: tr('search_repo'),
-                      ),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: SvgPicture.asset(
+                    'forward_arrow'.toSvg,
+                    matchTextDirection: true,
+                  ),
                 ),
-                MagicNumbers.MARGIN_SIZE_LARGE.ph,
-                const RepoCard(),
-                const RepoCard(),
-                const RepoCard(),
-                const RepoCard(),
-                const RepoCard(),
-                const RepoCard(),
-                const RepoCard(),
+                MagicNumbers.MARGIN_SIZE_DEFAULT.pw,
+                Expanded(
+                  child: MyTextFormField(
+                    onChanged: (v) {},
+                    prefixIcon: SvgPicture.asset(
+                      'search'.toSvg,
+                    ),
+                    hintText: tr('search_repo'),
+                  ),
+                ),
               ],
             ),
+          ),
+          Expanded(
+            child: repos == null
+                ? const Center(
+                    child: LoadingWidget(),
+                  )
+                : SmartRefresher(
+                    controller: _refreshController,
+                    enablePullDown: true,
+                    enablePullUp: true,
+                    footer: CustomFooter(
+                      builder: (BuildContext context, LoadStatus? mode) {
+                        Widget body;
+                        if (mode == LoadStatus.idle) {
+                          body = const SizedBox();
+                        } else if (mode == LoadStatus.loading) {
+                          body = const CupertinoActivityIndicator();
+                        } else if (mode == LoadStatus.failed) {
+                          body = Text(tr('load_failed'));
+                        } else if (mode == LoadStatus.canLoading) {
+                          body = Text(tr('release_load'));
+                        } else {
+                          body = Text(tr('no_more_data'));
+                        }
+                        return SizedBox(
+                          height: 55.0,
+                          child: Center(child: body),
+                        );
+                      },
+                    ),
+                    onRefresh: _getData,
+                    onLoading: _onLoading,
+                    child: ListView(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+                        vertical: MagicNumbers.PADDING_SIZE_EXTRA_LARGE,
+                      ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: MagicNumbers.PADDING_SIZE_DEFAULT,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: repos
+                                .map(
+                                  (repo) =>
+                                      ChangeNotifierProvider<RepoProvider>(
+                                    create: (_) => RepoProvider(repo),
+                                    child: const RepoCard(),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
           ),
         ],
       ),

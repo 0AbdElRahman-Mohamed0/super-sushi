@@ -36,14 +36,13 @@ class RepoModel {
 
   /// Get data from json
   RepoModel.fromMap(Map<String, dynamic> json) {
-    id = json['id'] as int;
-    name = json['name'] as String;
-    fullName = json['full_name'] as String;
-    owner = json['owner'] != null
-        ? RepoOwnerModel.fromMap(json['owner'] as Map<String, dynamic>)
-        : null;
-    htmlUrl = json['html_url'] as String;
-    description = json['description'] as String;
-    fork = json['fork'] as bool;
+    id = json['id'];
+    name = json['name'];
+    fullName = json['full_name'];
+    owner =
+        json['owner'] != null ? RepoOwnerModel.fromMap(json['owner']) : null;
+    htmlUrl = json['html_url'];
+    description = json['description'];
+    fork = json['fork'];
   }
 }
