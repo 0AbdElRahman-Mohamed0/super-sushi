@@ -7,6 +7,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:super_sushi/api_services/dio_error_extension.dart';
 import 'package:super_sushi/providers/repo_provider.dart';
 import 'package:super_sushi/providers/repos_provider.dart';
+import 'package:super_sushi/ui/screens/dev_task/search_screen.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/error_pop_up.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/loading_widget.dart';
 import 'package:super_sushi/ui/widgets/base_widgets/my_text_form_field.dart';
@@ -68,6 +69,19 @@ class _ReposScreenState extends State<ReposScreen> {
     }
   }
 
+  Future<void> _showSearch() async {
+    final repos = context.read<ReposProvider>().repos;
+
+    await showSearch(
+      context: context,
+      delegate: SearchScreen(
+        context: context,
+        initialList: (repos ?? []),
+      ),
+      query: "",
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final repos = context.watch<ReposProvider>().repos;
@@ -91,6 +105,8 @@ class _ReposScreenState extends State<ReposScreen> {
                 Expanded(
                   child: MyTextFormField(
                     onChanged: (v) {},
+                    onTap: _showSearch,
+                    readOnly: true,
                     prefixIcon: SvgPicture.asset(
                       'search'.toSvg,
                     ),

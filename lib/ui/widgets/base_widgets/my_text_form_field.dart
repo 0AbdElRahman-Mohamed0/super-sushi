@@ -25,6 +25,8 @@ class MyTextFormField extends StatelessWidget {
   final String? initialValue;
   final Color? borderColor;
   final BorderRadius? borderRadius;
+  final bool readOnly;
+  final Function()? onTap;
 
   /// Custom text field constructor
   const MyTextFormField({
@@ -50,11 +52,15 @@ class MyTextFormField extends StatelessWidget {
     this.initialValue,
     this.borderColor,
     this.borderRadius,
+    this.onTap,
+    this.readOnly = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
+      readOnly: readOnly,
       enabled: enabled ?? true,
       obscureText: obscure ?? false,
       keyboardType: keyboardType,
