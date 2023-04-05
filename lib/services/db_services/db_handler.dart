@@ -61,7 +61,13 @@ create table ${SQLRepoVars.tableName} (
   Future<void> deleteDatabase() async {
     var databasesPath = await getDatabasesPath();
     var path = join(databasesPath, SQLRepoVars.databaseName);
-    await databaseFactory.deleteDatabase(path);
+    databaseFactory.deleteDatabase(path);
+  }
+
+  Future<bool> databaseExists() async {
+    var databasesPath = await getDatabasesPath();
+    var path = join(databasesPath, SQLRepoVars.databaseName);
+    return databaseFactory.databaseExists(path);
   }
 
   Future closeDB() async => db?.close();

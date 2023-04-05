@@ -31,6 +31,7 @@ class _ReposScreenState extends State<ReposScreen> {
     initialRefresh: false,
   );
   int _page = 1;
+  bool _local = false;
 
   @override
   void initState() {
@@ -40,10 +41,22 @@ class _ReposScreenState extends State<ReposScreen> {
     });
   }
 
-  _getData() async {
+  _getData({bool reload = false}) async {
     try {
+      await context.read<DBHandler>().getAllRepos();
+      if (!mounted) return;
+      final tmpRepos = context.read<DBHandler>().repos;
+      if (tmpRepos != null && tmpRepos.isNotEmpty && !reload) {
+        _local = true;
+        setState(() {});
+        return;
+      }
+      _local = false;
+      setState(() {});
       await context.read<DBHandler>().deleteDatabase();
-      if(!mounted)return;
+      if (!mounted) return;
+      await context.read<DBHandler>().initDB();
+      if (!mounted) return;
       final reposPerPage = await context.read<ReposProvider>().getRepos(1);
       if (!mounted) return;
       await context.read<DBHandler>().batchRepos(reposPerPage);
@@ -78,7 +91,9 @@ class _ReposScreenState extends State<ReposScreen> {
   }
 
   Future<void> _showSearch() async {
-    final repos = context.read<ReposProvider>().repos;
+    final repos = _local
+        ? context.read<DBHandler>().repos
+        : context.read<ReposProvider>().repos;
 
     await showSearch(
       context: context,
@@ -92,7 +107,9 @@ class _ReposScreenState extends State<ReposScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final repos = context.watch<ReposProvider>().repos;
+    final repos = _local
+        ? context.watch<DBHandler>().repos
+        : context.watch<ReposProvider>().repos;
 
     return Scaffold(
       body: Column(
@@ -179,7 +196,7 @@ class _ReposScreenState extends State<ReposScreen> {
                         );
                       },
                     ),
-                    onRefresh: _getData,
+                    onRefresh: () => _getData(reload: true),
                     onLoading: _onLoading,
                     child: ListView(
                       padding: const EdgeInsets.symmetric(
